@@ -11,13 +11,6 @@ CloudVault is a Flask-based cloud storage system designed to provide a secure, s
 - 📁 **File Metadata Tracking**: Manage and track uploaded file details.
 - 🧩 **Modular Code Structure**: Clean and scalable Flask application.
 
-## 📸 Screenshots
-
-<p align="center">
-  <img src="screenshots/login.png" width="400">
-  <img src="screenshots/dashboard.png" width="400">
-  <img src="screenshots/upload.png" width="400">
-</p>
 
 ## 🛠️ Technologies Used
 
@@ -43,20 +36,20 @@ CloudVault is a Flask-based cloud storage system designed to provide a secure, s
    git clone https://github.com/aanjalii01/CloudVault-Secure-and-Scalable-File-Storage-Solution.git
    cd CloudVault-Secure-and-Scalable-File-Storage-Solution
 2. **Create and activate a virtual environment**:
-
-python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+  
+  python -m venv venv
+  source venv/bin/activate  # On Windows use: venv\Scripts\activate
 
 3. **Install dependencies**:
 
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 4. **Configure AWS (Optional)**:
 
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-AWS_S3_BUCKET_NAME=your_bucket_name
-SECRET_KEY=your_flask_secret_key
+  AWS_ACCESS_KEY_ID=your_aws_access_key
+  AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+  AWS_S3_BUCKET_NAME=your_bucket_name
+  SECRET_KEY=your_flask_secret_key
 
 5. **Run the application**:
 
