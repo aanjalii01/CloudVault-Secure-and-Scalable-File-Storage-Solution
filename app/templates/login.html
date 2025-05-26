@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}Login - CloudVault{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .login-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    margin-top: 80px;
+    color: #fff;
+  }
+
+  .login-container h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .login-container h2::before {
+    content: "☁️ ";
+  }
+
+  .form-label {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .form-control {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+  }
+
+  .form-control::placeholder {
+    color: #e0e0e0;
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-primary {
+    background-color: #66a6ff;
+    border: none;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .btn-primary:hover {
+    background-color: #4e8fff;
+  }
+
+  .text-danger {
+    font-size: 0.9em;
+  }
+</style>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5 login-container">
+      <h2>Login to CloudVault</h2>
+      <form method="POST" action="{{ url_for('auth.login') }}">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+          {{ form.username.label(class="form-label") }}
+          {{ form.username(class="form-control", placeholder="Enter your username") }}
+          {% for error in form.username.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <div class="mb-3">
+          {{ form.password.label(class="form-label") }}
+          {{ form.password(class="form-control", placeholder="Enter your password") }}
+          {% for error in form.password.errors %}
+            <div class="text-danger">{{ error }}</div>
+          {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Google Font for Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+{% endblock %}

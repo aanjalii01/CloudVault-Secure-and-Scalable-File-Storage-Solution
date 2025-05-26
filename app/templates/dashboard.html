@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}User Dashboard - CloudVault{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1 class="welcome-message">
+            <i class="fas fa-cloud"></i>
+            Welcome to CloudVault, <span class="username">{{ user.username }}</span>!
+        </h1>
+        <p class="dashboard-subtitle">
+            Your personal cloud storage space — secure, smart, and always available.
+        </p>
+    </div>
+
+    <div class="dashboard-section">
+        <div class="card">
+            <i class="fas fa-upload card-icon"></i>
+            <h2>Upload Files</h2>
+            <p>Store your files securely in the cloud.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-file-alt card-icon"></i>
+            <h2>Manage Files</h2>
+            <p>View, download or delete your uploaded files.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-robot card-icon"></i>
+            <h2>Chatbot Assistant</h2>
+            <p>Ask our AI assistant to help manage your files.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - CloudVault{% endblock %}
+
+{% block content %}
+<h2>Your Dashboard</h2>
+<p>Welcome to CloudVault, {{ current_user.username }}!</p>
+
+<div class="mt-4">
+  <a href="{{ url_for('files.files_page') }}" class="btn btn-primary">
+    <i class="fas fa-file-upload"></i> Manage Your Files
+  </a>
+  {% if current_user.role != 'admin' %}
+  <a href="{{ url_for('chatbot.chatbot_page') }}" class="btn btn-info ms-3">
+    <i class="fas fa-robot"></i> Open Chatbot
+  </a>
+  {% endif %}
+</div>
+{% endblock %}

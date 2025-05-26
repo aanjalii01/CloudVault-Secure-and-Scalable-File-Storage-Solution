@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - CloudVault{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Admin Dashboard - All Files</h2>
+
+    <form method="POST" action="{{ url_for('files.upload_file') }}" enctype="multipart/form-data" class="mb-3">
+        <input type="file" name="file" required>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="mb-3">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Filename</th>
+                <th>Owner</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+            <tr>
+                <td>{{ file.filename }}</td>
+                <td>{{ file.owner.username }}</td>
+                <td>
+                    <a href="{{ url_for('files.download_file', file_id=file.id) }}" class="btn btn-sm btn-success">Download</a>
+                    <form action="{{ url_for('files.delete_file', file_id=file.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this file?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

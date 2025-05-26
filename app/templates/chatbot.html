@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}CloudVault Assistant{% endblock %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<div class="chatbot-container">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar"></div>
+    <div class="chatbot-title">CloudyBot ☁️</div>
+  </div>
+
+  {% if current_user.role == 'admin' %}
+    <div class="alert alert-info" style="padding:20px; font-size:1.2em; border-radius: 15px;">
+      Hello Admin <strong>{{ current_user.username }}</strong>, the assistant is currently for users only.
+    </div>
+  {% else %}
+    <div class="chat-window" id="chatbox">
+      <div class="bot-message message">
+        <i class="fas fa-robot icon"></i>
+        <div class="text">Hello {{ current_user.username }}, how can I help you today? 😊</div>
+      </div>
+    </div>
+    <form id="chat-form" class="chat-input-container">
+      <input type="text" id="user-input" class="chat-input" placeholder="Ask me to list, upload or delete your files..." autocomplete="off" required />
+      <button type="submit" class="send-btn" title="Send Message"><i class="fas fa-paper-plane"></i></button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% if current_user.role != 'admin' %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endif %}
+{% endblock %}

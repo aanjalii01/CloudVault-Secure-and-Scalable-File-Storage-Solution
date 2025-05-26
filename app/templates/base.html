@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}CloudVault{% endblock %}</title>
+
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+  <!-- Font Awesome CDN (Icons) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-ZOeUO14a+uV84p5e9JH5HruCOUy61oQxQ3oKQyM6dK6ej4+n9QqHnbY5P8HgS6eY9k68X9xXsd4n3BhoPOKqjw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+   
+  <nav class="navbar">
+  <div class="left">
+    <i class="fas fa-cloud"></i> <span class="brand">CloudVault</span>
+  </div>
+  <div class="right">
+    {% if current_user.is_authenticated %}
+      <a href="{{ url_for('main.user_dashboard') }}">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+      </a>
+      <a href="{{ url_for('files.files_page') }}">
+        <i class="fas fa-file-upload"></i> Files
+      </a>
+      {% if current_user.role != 'admin' %}
+        <a href="{{ url_for('chatbot.chatbot_page') }}">
+          <i class="fas fa-robot"></i> Chatbot
+        </a>
+      {% endif %}
+      <a href="{{ url_for('auth.logout') }}">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Login</a>
+      <a href="{{ url_for('auth.register') }}">Register</a>
+    {% endif %}
+  </div>
+</nav>
+
+
+ <!-- Main Content -->
+<main class="main-content container">
+  {% if current_user.is_authenticated %}
+    <div class="welcome-banner">
+      <div class="welcome-text">
+        <i class="fas fa-hand-sparkles wave-icon"></i>
+        <h1>Welcome, {{ current_user.username }}!</h1>
+        <p class="tagline">We're glad to have you on CloudVault 🚀</p>
+      </div>
+    </div>
+  {% endif %}
+  {% block content %}{% endblock %}
+</main>
+<style>
+.welcome-banner {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeInBanner 1.2s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-banner::after {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-10%, -10%); }
+}
+
+.welcome-text h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.welcome-text p {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin: 5px 0;
+}
+
+.tagline {
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.wave-icon {
+  font-size: 3rem;
+  color: #ffd700;
+  animation: wave 2s infinite;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  15% { transform: rotate(15deg); }
+  30% { transform: rotate(-10deg); }
+  45% { transform: rotate(15deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(15deg); }
+}
+
+@keyframes fadeInBanner {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+</style>
+
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
