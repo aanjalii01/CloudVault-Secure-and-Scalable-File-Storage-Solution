@@ -70,16 +70,3 @@ flask run
 
 - Can upload, download, and delete only their files.
 
-## 📂 Folder Structure
-
-CloudVault/
-├── app/
-│   ├── templates/
-│   ├── static/
-│   ├── routes.py
-│   ├── models.py
-│   └── ...
-├── uploads/
-├── requirements.txt
-├── .env.example
-└── run.py
