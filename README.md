@@ -141,7 +141,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-*Developed as part of the Design and Analysis of Algorithms course (CSE305) at Graphic Era University.*
+*Developed as part of the Virtualization and Cloud Computiong course (CLOUD-IV-T012 ) at Graphic Era University.*
 
 
 🔐 MFA (Multi-Factor Authentication)
