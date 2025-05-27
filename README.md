@@ -102,7 +102,8 @@ CloudVault/
 │   ├── __init__.py         # Initializes the Flask app
 │   ├── routes.py           # Defines application routes
 │   ├── models.py           # Database models
-│   └── utils.py            # Utility functions
+│   ├── utils.py            # Utility functions
+│   └── chatbot.py          # Chatbot logic and integration
 ├── instance/
 │   └── cloudvault.db       # SQLite database file
 ├── logs/                   # Application logs
@@ -119,6 +120,7 @@ CloudVault/
 - **User Registration and Authentication**: Secure user sign-up and login functionalities.
 - **File Upload and Download**: Users can upload files to and download files from the cloud storage.
 - **Admin Dashboard**: Admins can manage users and monitor file activities.
+- **Chatbot Assistance**: Integrated chatbot provides real-time help and guidance to users.
 - **Activity Logs**: Tracks user activities for security and auditing purposes.
 
 ## 🧪 Testing & Validation
@@ -126,7 +128,8 @@ CloudVault/
 - **Authentication Tests**: Verified secure login and access control mechanisms.
 - **File Handling Tests**: Ensured reliable file upload and download processes.
 - **AWS S3 Integration Tests**: Confirmed successful storage and retrieval of files from S3.
-- **User Interface Tests**: Validated responsiveness and usability of the web interface.
+- **Chatbot Functionality Tests**: Validated chatbot responses and assistance features.
+- **User Interface Tests**: Ensured responsiveness and usability of the web interface.
 
 ## 🔮 Future Enhancements
 
@@ -134,18 +137,9 @@ CloudVault/
 - **File Versioning**: Implement version control for uploaded files.
 - **Search Functionality**: Allow users to search for files within the storage system.
 - **Sharing Capabilities**: Enable file sharing between users with appropriate permissions.
+- **Advanced Chatbot Features**: Incorporate natural language processing for more intuitive interactions.
 
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
-*Developed as part of the Virtualization and Cloud Computiong course (CLOUD-IV-T012 ) at Graphic Era University.*
-
-
-🔐 MFA (Multi-Factor Authentication)
-
-💾 File preview & versioning
-
-🌍 Global deployment with CDN caching
+*Developed as part of the Virtualization and Cloud Computing course (CLOUD-IV-T012 ) at Graphic Era University.*
